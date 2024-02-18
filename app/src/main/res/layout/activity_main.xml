@@ -7,19 +7,22 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:layout_width="match_parent"
         android:id="@+id/mapFragment"
-        android:layout_height="match_parent"
         class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <ImageButton
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="15dp"
         android:background="@color/white"
         android:src="@drawable/baseline_menu_24"
         android:scaleType="fitXY"
@@ -28,25 +31,230 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="Image"
         android:id="@+id/mapOptionMenu"/>
-    
+
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        app:cardCornerRadius="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mapOptionMenu">
+        android:id="@+id/cardView"
+        android:layout_width="296dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/mapOptionMenu"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/autoCompleteFragment"
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"/>
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            app:iconifiedByDefault="false"
+            app:queryHint="Search location" />
 
+        <!--        <ListView-->
+        <!--            android:id="@+id/suggestionListView"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/idSearchView"-->
+        <!--            android:visibility="gone" />-->
     </androidx.cardview.widget.CardView>
 
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/direction"
+        android:src="@drawable/baseline_directions_24"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapOptionMenu" />
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/streetView"
+        android:src="@drawable/baseline_streetview_24"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/direction"/>
 
+    <ImageButton
+        android:id="@+id/zoomInButton"
+        android:layout_width="30dp"
+        android:backgroundTint="@color/white"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/streetView"
+        android:src="@drawable/baseline_add_24"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <ImageButton
+        android:id="@+id/zoomOutButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zoomInButton"
+        android:src="@drawable/baseline_remove_24"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"/>
+    <ImageButton
+        android:id="@+id/pin"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zoomOutButton"
+        android:src="@drawable/baseline_push_pin_24"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
+    <ImageButton
+        android:id="@+id/route"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pin"
+        android:src="@drawable/baseline_route_24"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".MainActivity">-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/homeMap"-->
+<!--        android:name="com.google.android.gms.maps.SupportMapFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:id="@+id/coordinate"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="120dp">-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="40dp"-->
+<!--            android:elevation="10dp"-->
+<!--            app:boxBackgroundColor="@color/white"-->
+<!--            app:boxCornerRadiusBottomEnd="25dp"-->
+<!--            app:boxCornerRadiusBottomStart="25dp"-->
+<!--            app:boxCornerRadiusTopEnd="25dp"-->
+<!--            app:boxCornerRadiusTopStart="25dp"-->
+<!--            app:boxStrokeColor="@color/white"-->
+<!--            app:boxStrokeWidth="0dp"-->
+<!--            app:endIconMode="clear_text"-->
+<!--            app:hintEnabled="false"-->
+<!--            app:layout_anchor="@id/view"-->
+<!--            app:layout_anchorGravity="bottom|center">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/edtPlaceName"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawableStart="@drawable/baseline_location_on_24"-->
+<!--                android:drawablePadding="10dp"-->
+<!--                android:hint="Search Place"-->
+<!--                android:inputType="text"-->
+<!--                android:maxLines="1"-->
+<!--                android:textColorHint="@color/black" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+<!--        <View-->
+<!--            android:id="@+id/view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginBottom="30dp"-->
+<!--            android:background="@drawable/map_background"-->
+<!--            android:elevation="5dp" />-->
+
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
+
+<!--    <HorizontalScrollView-->
+<!--        android:id="@+id/placesList"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/coordinate"-->
+<!--        android:scrollbars="none">-->
+
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/placesGroup"-->
+<!--            style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:singleLine="true"-->
+<!--            app:singleSelection="true" />-->
+
+<!--    </HorizontalScrollView>-->
+
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/btnMapType"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/placesList"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_margin="15dp"-->
+<!--        android:src="@drawable/map_type"-->
+<!--        app:backgroundTint="@color/white"-->
+<!--        app:fabCustomSize="40dp"-->
+<!--        app:tint="@color/red" />-->
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/enableTraffic"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/btnMapType"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginEnd="15dp"-->
+<!--        android:src="@drawable/traffic"-->
+<!--        app:backgroundTint="@color/white"-->
+<!--        app:fabCustomSize="40dp"-->
+<!--        app:tint="@color/red" />-->
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/currentLocation"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/enableTraffic"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_margin="15dp"-->
+<!--        android:src="@drawable/mylocation"-->
+<!--        app:backgroundTint="@color/white"-->
+<!--        app:fabCustomSize="50dp"-->
+<!--        app:tint="@color/red" />-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/placesRecyclerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginBottom="26dp"-->
+<!--        android:clipToPadding="false"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingLeft="8dp"-->
+<!--        android:paddingRight="8dp"-->
+<!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
